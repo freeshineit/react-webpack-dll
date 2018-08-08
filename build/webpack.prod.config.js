@@ -1,12 +1,12 @@
 const path = require('path')
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const ROOT_PATH = path.resolve(__dirname);
 
 module.exports = {
     entry: {
-        polyfill: 'babel-polyfill',
         app: [
             path.resolve(__dirname, '../src/index.js'),
         ]
@@ -24,26 +24,44 @@ module.exports = {
                 use: {
                     loader: "babel-loader"
                 }
+            },
+            {
+                test: /\.less|css$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', `less-loader?{"sourceMap":true}`]
+                }),
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]?[hash]',
+                        // useRelativePath: true,
+                        // publicPath: `http://localhost:${scriptConfig.port}/images/`
+                    }
+                }]
             }
         ]
     },
     resolve: {
         extensions: ['.js', '.jsx', '.less', '.css']
-        //root: APP_PATH
     },
     plugins: [
         new HtmlWebPackPlugin({
             template: "public/index.html",
-            filename: "index.html"
-        }),
-        new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({
-            // 'process.env.NODE_ENV': '"production"'
+            filename: "index.html",
+            minify: true
         }),
         new webpack.DllReferencePlugin({
             manifest: require(path.resolve(__dirname, 'lib', 'manifest.json')),
             context: ROOT_PATH,
+        }),
+        new ExtractTextPlugin({
+            filename: '[name].[hash].css',
+            disable: false,
+            allChunks: true
         })
     ]
 };

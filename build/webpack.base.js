@@ -10,10 +10,8 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        // path: path.resolve(__dirname, '../dist'),
-        // publicPath: `http://localhost:${config.dev.port}/`
     },
     resolve: {
-        extensions: ['.js', '.jsx', '.less']
+        extensions: ['.js', '.jsx', '.less', '.css']
     }
 };
