@@ -1,12 +1,14 @@
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const ROOT_PATH = path.resolve(__dirname);
 
 const vendors = [
     'react',
     'react-dom',
-    'react-router-dom'
+    'react-router-dom',
+    'babel-polyfill'
 ];
 
 module.exports = {
@@ -15,25 +17,14 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
-        filename: '[name]_[hash].js',
+        filename: '[name].[hash].js',
         library: '[name]_lib',
-    },
-    module: {
-        rules: [
-            {
-                test: /\.js|.jsx$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader"
-                }
-            }
-        ]
     },
     plugins: [
         new webpack.DllPlugin({
             path: path.resolve(ROOT_PATH, 'lib', 'manifest.json'),
             name: '[name]_lib',
             context: ROOT_PATH,
-        }),
+        })
     ],
 }
