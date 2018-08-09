@@ -29,3 +29,9 @@ npm run build
 ```
 
 
+## License
+
+MIT © [Shine Shao](https://github.com/freeshineit)
+
+
+
