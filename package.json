@@ -7,6 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --mode development --progress --open --config build/webpack.dev.config.js",
+    "start": "npm run dev",
     "build": "node build/index.js",
     "dll": "webpack -p --mode production --progress --config build/webpack.dll.config.js"
   },

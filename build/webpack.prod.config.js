@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const shell = require('shelljs');
 const fs = require('fs');
+const config = require('./config');
 const manifestPath = path.join(__dirname, '../dist/manifest.json');
 
 module.exports = async () => {
@@ -70,7 +71,9 @@ module.exports = async () => {
             new HtmlWebPackPlugin({
                 template: "public/index.html",
                 filename: "index.html",
-                env: 'production'
+                env: 'production',
+                minify: true,
+                vendor: _manifest[`${[config.pro.vendor]}.js`]
             }),
             new webpack.DllReferencePlugin({
                 manifest: require(path.resolve(__dirname, 'lib', 'manifest.json')),

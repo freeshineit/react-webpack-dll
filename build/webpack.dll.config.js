@@ -1,6 +1,7 @@
 const path = require('path')
 const webpack = require('webpack')
 const fs = require('fs');
+const config = require('./config.js');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 var ManifestPlugin = require('webpack-manifest-plugin');
 const manifestPath = path.join(__dirname, '../dist/manifest.json');
@@ -25,7 +26,7 @@ module.exports = () => {
 
     return {
         entry: {
-            vendor: vendors,
+            [config.pro.vendor]: vendors,
         },
         output: {
             path: path.resolve(__dirname, '../dist'),
