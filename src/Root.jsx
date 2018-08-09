@@ -5,7 +5,6 @@ class Root extends Component{
     render() {
         return (
             <div>
-                this is root
                 <App />
             </div>
         );
