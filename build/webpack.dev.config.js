@@ -25,16 +25,24 @@ const devConfig = merge(webpackBase, {
                 }),
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|svg)$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: '[name].[ext]?[hash]',
+                        name: '[name].[ext]',
                         // useRelativePath: true,
                         // publicPath: `http://localhost:${scriptConfig.port}/images/`
                     }
                 }]
-            }
+            },
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: require.resolve('url-loader'),
+                options: {
+                    limit: 10000,
+                    name: 'static/media/[name].[ext]',
+                },
+            },
         ]
     },
     devtool: 'eval-source-map',
