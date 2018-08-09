@@ -54,7 +54,8 @@ const devConfig = merge(webpackBase, {
     plugins: [
         new HtmlWebPackPlugin({
             template: "public/index.html",
-            filename: "index.html"
+            filename: "index.html",
+            env: 'development'
         }),
         new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),

@@ -1,5 +1,5 @@
 {
-    "production": {
-        "vendor": "vendor.e29813220ff184d87ac5.js"
-    }
+  "app.js": "app_5582f83b28a22f22947f.js",
+  "vendor.js": "vendor.e29813220ff184d87ac5.js",
+  "app.css": "app.5582f83b28a22f22947f.css"
 }
