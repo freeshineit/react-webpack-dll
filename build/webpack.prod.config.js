@@ -33,16 +33,23 @@ module.exports = {
                 }),
             },
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|gif|svg)$/,
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: '[name].[ext]?[hash]',
-                        // useRelativePath: true,
-                        // publicPath: `http://localhost:${scriptConfig.port}/images/`
+                        limit: 10000,
+                        name: 'images/[name].[ext]',
                     }
                 }]
-            }
+            },
+            {
+                test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                loader: require.resolve('url-loader'),
+                options: {
+                    limit: 10000,
+                    name: 'media/[name].[ext]',
+                },
+            },
         ]
     },
     resolve: {
