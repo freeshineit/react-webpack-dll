@@ -1,8 +1,4 @@
 #  React webpack dll 优化
-[![npm][npm]][npm-url]
-[![node][node]][node-url]
-[![deps][deps]][deps-url]
-[![tests][tests]][tests-url]
 
 ## install
 
