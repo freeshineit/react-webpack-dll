@@ -30,8 +30,6 @@ const devConfig = merge(webpackBase, {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        // useRelativePath: true,
-                        // publicPath: `http://localhost:${scriptConfig.port}/images/`
                     }
                 }]
             },
@@ -47,9 +45,10 @@ const devConfig = merge(webpackBase, {
     },
     devtool: 'eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        port: config.dev.port
+        hot: true,
+        historyApiFallback: true, // 这个很重要
+        port: config.dev.port,
+        proxy:{}
     },
     plugins: [
         new HtmlWebPackPlugin({
