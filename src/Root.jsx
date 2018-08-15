@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
-import { App} from './containers/children';
+import { renderRoutes } from 'react-router-config'
+import routes from './containers/routes';
+import {BrowserRouter} from 'react-router-dom';
+
+
 class Root extends Component{
 
     render() {
         return (
-            <div>
-                <App />
-            </div>
+            <BrowserRouter>
+                {
+                	renderRoutes(routes)
+                }
+            </BrowserRouter>
         );
     }
 }

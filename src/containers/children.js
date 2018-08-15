@@ -1,5 +1,6 @@
-import App from './App';
-
+import Data from './Data';
+import Home from './Home'
 export {
-    App
+    Home,
+    Data
 }
