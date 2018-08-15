@@ -5,8 +5,7 @@
   "license": "MIT",
   "description": "react dll DllReferencePlugin ",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --mode development --progress --open --config build/webpack.dev.config.js",
+    "dev": "webpack-dev-server --mode development --progress --config build/webpack.dev.config.js",
     "start": "npm run dev",
     "build": "node build/index.js",
     "dll": "webpack -p --mode production --progress --config build/webpack.dll.config.js"
@@ -33,6 +32,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-hot-loader": "^4.3.4",
+    "react-router-config": "^1.0.0-beta.4",
     "react-router-dom": "^4.3.1",
     "shelljs": "^0.8.2",
     "style-loader": "^0.22.0",

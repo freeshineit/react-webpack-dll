@@ -11,6 +11,7 @@ const vendors = [
     'react',
     'react-dom',
     'react-router-dom',
+    'react-router-config',
     'babel-polyfill'
 ];
 
