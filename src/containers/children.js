@@ -1,6 +1,6 @@
-import Data from './Data';
-import Home from './Home'
+import Data from '~/containers/Data';
+import Home from '~/containers/Home';
 export {
     Home,
     Data
-}
+};
