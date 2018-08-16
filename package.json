@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "description": "react dll DllReferencePlugin ",
+  "sideEffects": false,
   "scripts": {
     "dev": "webpack-dev-server --mode development --progress --config build/webpack.dev.config.js",
     "start": "npm run dev",
@@ -19,6 +20,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-plugin-root-import": "^6.1.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
