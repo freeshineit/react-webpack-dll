@@ -11,11 +11,9 @@ const devConfig = merge(webpackBase, {
     module: {
         rules: [
             {
-                test: /\.js|.jsx$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader?cacheDirectory"
-                }
+                use: ['babel-loader?cacheDirectory', 'eslint-loader']
             },
             {
                 test: /\.less|css$/,
@@ -35,7 +33,7 @@ const devConfig = merge(webpackBase, {
             },
             {
                 test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-                loader: require.resolve('url-loader'),
+                loader: 'url-loader',
                 options: {
                     limit: 10000,
                     name: 'static/media/[name].[ext]',
