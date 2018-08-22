@@ -337,20 +337,23 @@ module.exports = {
 注意️⚠️：
 
 ```js
-    resolve: {
-        extensions: [
-            '.mjs',
-            '.web.js',
-            '.js',
-            '.json',
-            '.web.jsx',
-            '.jsx',
-            '.less',
-            '.js',
-            '.css'
-        ]
-    }
+resolve: {
+    extensions: [
+        '.mjs',
+        '.web.js',
+        '.js',
+        '.json',
+        '.web.jsx',
+        '.jsx',
+        '.less',
+        '.js',
+        '.css'
+    ]
+}
 ```
+
+具体代码请切换到`feature/antd`分支
+
 
 ## License
 
