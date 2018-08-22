@@ -353,6 +353,19 @@ resolve: {
 
 具体代码请切换到`feature/antd`分支
 
+## material
+
+```sh
+## 安装material-ui@1.x.x
+npm install @material-ui/core
+
+## 如果要使用icons
+npm install @material-ui/icons
+
+```
+
+具体代码请切换到`feature/material`分支
+
 
 ## License
 
