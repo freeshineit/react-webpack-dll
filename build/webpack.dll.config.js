@@ -12,6 +12,7 @@ const vendors = [
     'react-dom',
     'react-router-dom',
     'react-router-config',
+    'antd',
     'babel-polyfill'
 ];
 

@@ -5,6 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const shell = require('shelljs');
 const fs = require('fs');
+const theme = require('./less');
 const config = require('./config');
 const manifestPath = path.join(__dirname, '../dist/manifest.json');
 
@@ -38,10 +39,17 @@ module.exports = async () => {
                     }
                 },
                 {
-                    test: /\.less|css$/,
+                    test: /\.less$/,
                     loader: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
-                        use: ['css-loader', `less-loader?{"sourceMap":true}`]
+                        use: ['css-loader', { loader: `less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`, options: { javascriptEnabled: true } }]
+                    }),
+                },
+                {
+                    test: /\.css$/,
+                    loader: ExtractTextPlugin.extract({
+                        fallback: 'style-loader',
+                        use: ['css-loader']
                     }),
                 },
                 {

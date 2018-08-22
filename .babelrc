@@ -12,6 +12,14 @@
                 "rootPathPrefix": "~",
                 "rootPathSuffix": "src"
             }
+        ],
+        [
+            "import",
+            {
+                "libraryName": "antd",
+                "libraryDirectory": "es",
+                "style": true
+            }
         ]
     ]
 }

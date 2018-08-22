@@ -275,6 +275,31 @@ export {
 };
 ```
 
+
+## antd
+
+```sh
+npm i antd
+
+npm i babel-plugin-import --save-dev
+```
+在`.babelrc`中添加插件
+
+```json
+"plugins": [
+    [
+        "import",
+        {
+            "libraryName": "antd", "style": "css"
+        }
+    ]
+]
+```
+
+### config
+
+
+
 ## License
 
 MIT © [Shine Shao](https://github.com/freeshineit)

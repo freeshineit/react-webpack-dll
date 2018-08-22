@@ -3,7 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const webpack = require('webpack');
 const merge = require('webpack-merge')
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const theme = require('./less');
 const webpackBase = require('./webpack.base');
 const config = require('./config');
 
@@ -11,15 +11,30 @@ const devConfig = merge(webpackBase, {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.(jsx|js)?$/,
                 exclude: /node_modules/,
-                use: ['babel-loader?cacheDirectory', 'eslint-loader']
+                use: ['babel-loader?cacheDirectory','eslint-loader']
             },
             {
-                test: /\.less|css$/,
+                test: /\.less$/,
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
-                    use: ['css-loader', `less-loader?{"sourceMap":true}`]
+                    use: [
+                        'css-loader',
+                        { 
+                            loader: `less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
+                            options: {
+                                javascriptEnabled: true
+                            }
+                        }
+                    ]
+                }),
+            },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader']
                 }),
             },
             {
@@ -70,7 +85,9 @@ const devConfig = merge(webpackBase, {
             'process.env.NODE_ENV': '"development"'
         }),
         new ExtractTextPlugin({
-            filename: '[name].css'
+            filename: '[name].css',
+            disable: false,
+            allChunks: true
         })
     ]
 })
