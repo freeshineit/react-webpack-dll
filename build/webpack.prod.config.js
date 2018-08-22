@@ -73,7 +73,17 @@ module.exports = async () => {
             ]
         },
         resolve: {
-            extensions: ['.js', '.jsx', '.less', '.css']
+            extensions: [
+                '.mjs',
+                '.web.js',
+                '.js',
+                '.json',
+                '.web.jsx',
+                '.jsx',
+                '.less',
+                '.js',
+                '.css'
+            ]
         },
         plugins: [
             new HtmlWebPackPlugin({
