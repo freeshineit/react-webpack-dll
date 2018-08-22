@@ -275,6 +275,85 @@ export {
 };
 ```
 
+## antd
+
+```sh
+npm i antd
+
+npm i babel-plugin-import --save-dev
+```
+
+
+### config
+
+在`.babelrc`中添加插件
+
+```json
+"plugins": [
+    [
+         "import",
+        {
+            "libraryName": "antd",
+            "libraryDirectory": "es",
+            "style": true
+        }
+    ]
+]
+```
+
+配置主题,创建一个主题配置文件`less.js`
+
+
+```js
+module.exports = {
+    'primary-color': '#f34949',
+    'link-color': '#1DA57A',
+    'border-radius-base': '2px',
+    'font-size-base': '12px',
+};
+```
+
+`webpack`配置
+
+```js
+{
+    test: /\.less$/,
+    loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: [
+            'css-loader',
+            { 
+                loader: `less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
+                options: {
+                    javascriptEnabled: true // less@3.x.x
+                }
+            }
+        ]
+    }),
+}
+```
+
+注意️⚠️：
+
+```js
+resolve: {
+    extensions: [
+        '.mjs',
+        '.web.js',
+        '.js',
+        '.json',
+        '.web.jsx',
+        '.jsx',
+        '.less',
+        '.js',
+        '.css'
+    ]
+}
+```
+
+具体代码请切换到`feature/antd`分支
+
+
 ## License
 
 MIT © [Shine Shao](https://github.com/freeshineit)
