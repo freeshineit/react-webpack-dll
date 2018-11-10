@@ -2,7 +2,6 @@ const path = require('path')
 const webpack = require('webpack')
 const fs = require('fs');
 const config = require('./config.js');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
 var ManifestPlugin = require('webpack-manifest-plugin');
 const manifestPath = path.join(__dirname, '../dist/manifest.json');
 const ROOT_PATH = path.resolve(__dirname);
