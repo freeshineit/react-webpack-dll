@@ -42,7 +42,16 @@ module.exports = async () => {
                     test: /\.less$/,
                     loader: ExtractTextPlugin.extract({
                         fallback: 'style-loader',
-                        use: ['css-loader', { loader: `less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`, options: { javascriptEnabled: true } }]
+                        use: [
+                            {loader:'css-loader'},
+                            { 
+                                loader: 'less-loader',
+                                options: {
+                                    modifyVars: theme,
+                                    javascriptEnabled: true,
+                                },
+                            }
+                        ]
                     }),
                 },
                 {

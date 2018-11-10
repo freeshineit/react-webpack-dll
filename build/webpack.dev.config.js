@@ -20,12 +20,13 @@ const devConfig = merge(webpackBase, {
                 loader: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     use: [
-                        'css-loader',
+                        {loader:'css-loader'},
                         { 
-                            loader: `less-loader?{"sourceMap":true,"modifyVars":${JSON.stringify(theme)}}`,
+                            loader: 'less-loader',
                             options: {
-                                javascriptEnabled: true
-                            }
+                                modifyVars: theme,
+                                javascriptEnabled: true,
+                            },
                         }
                     ]
                 }),
