@@ -1,12 +1,11 @@
 {
     "presets": [
-        "es2015",
-        "env",
-        "react"
+        "@babel/preset-env",
+        "@babel/preset-react"
     ],
     "plugins": [
         "react-hot-loader/babel",
-        // https://www.npmjs.com/package/babel-plugin-root-import
+        "@babel/plugin-proposal-class-properties",
         ["babel-plugin-root-import",
             {
                 "rootPathPrefix": "~",
