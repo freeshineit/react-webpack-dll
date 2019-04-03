@@ -1,5 +1,5 @@
 import App from './App';
-import {Home, Data} from './children';
+import {Home} from './children';
 
 const routes = [
 	{
@@ -9,10 +9,11 @@ const routes = [
 				path: '/',
 				exact: true,
 				component: Home
-			},{
-				path: '/data',
-				component: Data
-			}
+            }
+            // {
+			// 	path: '/data',
+			// 	component: Data
+			// }
 		]
 	}
 ]

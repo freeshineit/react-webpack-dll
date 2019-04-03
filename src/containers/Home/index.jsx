@@ -60,7 +60,8 @@ class Home extends Component {
 	render() {
 		return	(
 			<div>
-				<Table columns={columns} dataSource={data} />
+                124123
+				<Table colsumns={columns} dataSource={data} />
 			</div>
 		)
 	}

@@ -27,9 +27,35 @@ module.exports = async () => {
         output: {
             path: path.resolve(__dirname, '../dist'),
             filename: '[name]_[hash].js',
+        },            
+        optimization: {
+            splitChunks: {
+                chunks: 'all', // initial、async和all
+                minSize: 30000, // 形成一个新代码块最小的体积
+                maxAsyncRequests: 5, // 按需加载时候最大的并行请求数
+                maxInitialRequests: 3, // 最大初始化请求数
+                automaticNameDelimiter: '~', // 打包分割符
+                name: true,
+                cacheGroups: {
+                    vendors: { // 项目基本框架等
+                        chunks: 'all',
+                        test: /[\\/]node_modules[\\/](antd)[\\/]/,
+                        priority: 100,
+                        name: 'vendor_antd',
+                    }
+                }
+            }
         },
         module: {
             rules: [
+                {
+                    // 为了解决 icon 太多太大的问题，把所有的icon 提出到一个单独的文件
+                    loader: require.resolve('webpack-ant-icon-loader'),
+                    enforce: 'pre',
+                    include:[
+                        path.resolve('node_modules/@ant-design/icons/lib/dist')
+                    ]
+                },
                 {
                     test: /\.jsx?$/,
                     exclude: /node_modules/,

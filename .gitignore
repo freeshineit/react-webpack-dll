@@ -1,5 +1,4 @@
 node_modules
 .vscode
-main.go
 
-dist
+dist/
